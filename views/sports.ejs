@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome</title>
+        <link rel="stylesheet" href="/app.css">
+    </head>
+<body>
+    <h1>Sport List</h1>
+
+    <% sports.forEach(function(sport){ %>
+        <li><%= sport %></li>
+    <% }); %>
+    
+    <form action="/addsport" method="POST">
+        <input type="text" name="newsport" placeholder="name">
+        <button>Add</button>
+    </form>
+</body>
+</html>

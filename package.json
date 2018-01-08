@@ -1,0 +1,25 @@
+{
+  "name": "sportrental",
+  "version": "1.0.0",
+  "description": "A system that manage sport rental",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ysongh/SportRentalMS.git"
+  },
+  "author": "song",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ysongh/SportRentalMS/issues"
+  },
+  "homepage": "https://github.com/ysongh/SportRentalMS#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.9"
+  }
+}
