@@ -6,14 +6,24 @@
     </head>
 <body>
     <h1>Sport List</h1>
-
-    <% sports.forEach(function(sport){ %>
-        <li><%= sport %></li>
-    <% }); %>
     
-    <form action="/addsport" method="POST">
-        <input type="text" name="newsport" placeholder="name">
-        <button>Add</button>
-    </form>
+    <table>
+        <thead>
+            <tr> 
+                <th>Equipment Name</th>
+                <th>Quantity</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+             <% sports.forEach(function(sport){ %>
+                <tr>
+                    <td><%= sport.name %></td>
+                    <td><%= sport.quantity %></td>
+                    <td><%= sport.description %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 </body>
 </html>

@@ -5,10 +5,8 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended:true}));
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/sport_app");
+mongoose.connect("mongodb://localhost/sport_app", {useMongoClient: true});
 
-var sports = ["Ping Pong Ball"];
- 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
@@ -41,28 +39,35 @@ Sport.find({}, function(err, sport){
     }
     else{
         console.log("All the sport.....");
-        console.log(sport);
+        console.log(sport.name);
     }
 });
 
 app.get("/", function(req, res){
-    res.render("home"); 
+    res.render("home");
 });
 
-app.post("/addsport", function(req, res){
+/*app.post("/addsport", function(req, res){
     var newsport = req.body.newsport;
-    sports.push(newsport);
     res.redirect("/sports");
 });
+*/
 
 app.get("/sports", function(req, res){
-    res.render("sports", {sports: sports});
+    Sport.find({}, function(err, sports){
+        if(err){
+            console.log("Error");
+        }
+        else{
+            res.render("sports", {sports: sports});
+        }
+    });
 });
 
 app.get("*", function(req, res){
-   res.send("Cannot found this page"); 
+   res.send("Cannot found this page");
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("It running"); 
+    console.log("It running");
 });
