@@ -18,31 +18,6 @@ let sportSchema = new mongoose.Schema({
 
 let Sport = mongoose.model("Sport", sportSchema);
 
-/*Sport.create({
-   name:"Ping Pong Ball",
-   description: "A small ball for table tennis.",
-   quantity: 10
-}, function(err, sport){
-    if(err){
-        console.log("Oh no, error");
-        console.log(err);
-    }
-    else{
-        console.log(sport);
-    }
-});*/
-
-Sport.find({}, function(err, sport){
-    if(err){
-        console.log("Oh no, error");
-        console.log(err);
-    }
-    else{
-        console.log("All the sport.....");
-        console.log(sport.name);
-    }
-});
-
 app.get("/", function(req, res){
     res.render("home");
 });
@@ -54,6 +29,21 @@ app.get("/sports", function(req, res){
         }
         else{
             res.render("sports", {sports: sports});
+        }
+    });
+});
+
+app.get("/sports/new", function(req, res){
+    res.render("new");
+});
+
+app.post("/sports", function(req, res){
+    Sport.create(req.body.sport, function(err, newSport){
+        if(err){
+            res.render("new");
+        }
+        else{
+            res.redirect("/sports");
         }
     });
 });
