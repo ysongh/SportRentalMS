@@ -47,12 +47,6 @@ app.get("/", function(req, res){
     res.render("home");
 });
 
-/*app.post("/addsport", function(req, res){
-    var newsport = req.body.newsport;
-    res.redirect("/sports");
-});
-*/
-
 app.get("/sports", function(req, res){
     Sport.find({}, function(err, sports){
         if(err){

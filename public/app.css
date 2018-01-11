@@ -1,9 +1,3 @@
-body{
-    color: purple;
-    font-size: 20px;
-    background-color: yellow;
-}
-
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -19,4 +13,12 @@ td, th {
     text-align: left;
     padding: 15px;
    
+}
+
+i.icon {
+    font-size: 2em;
+}
+
+.container.main{
+    margin-top: 7.0em;
 }
