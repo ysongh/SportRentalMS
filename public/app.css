@@ -22,3 +22,7 @@ i.icon {
 .container.main{
     margin-top: 7.0em;
 }
+
+.center{
+    margin: 0 auto;
+}

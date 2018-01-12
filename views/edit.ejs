@@ -1,0 +1,21 @@
+<% include ./partials/header %>
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit <%= sport.name %></div>
+    <form class="ui form" action="/sports/<%= sport._id %>?_method=PUT" method="POST">
+        <div class="field">
+            <label>Name</label>
+            <input type="text" name="sport[name]" value="<%= sport.name %>">
+        </div>
+        <div class="field">
+            <label>Quantity</label>
+            <input type="text" name="sport[quantity]" value="<%= sport.quantity %>">
+        </div>
+        <div class="field">
+            <label>Description</label>
+            <textarea name="sport[description]"><%= sport.description %></textarea>
+        </div>
+        <input class="ui primary button" type="submit" value="Save">
+        <button class="ui button"><a href="/sports">Cancel</a></button>
+    </form>
+</div>
+<% include ./partials/footer %>

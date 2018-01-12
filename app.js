@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended:true}));
 
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
+
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/sport_app", {useMongoClient: true});
 
@@ -44,6 +47,28 @@ app.post("/sports", function(req, res){
         }
         else{
             res.redirect("/sports");
+        }
+    });
+});
+
+app.get("/sports/:id/edit", function(req, res){
+    Sport.findById(req.params.id, function(err, foundSport){
+        if(err){
+            res.redirect("/sports");
+        }
+        else{
+            res.render("edit", {sport: foundSport});
+        }
+    });
+});
+
+app.put("/sports/:id", function(req, res){
+    Sport.findByIdAndUpdate(req.params.id, req.body.sport, function(err, updatedSport){
+        if(err){
+            res.redirect("/sports");
+        }
+        else{
+            res.redirect("/sports/");
         }
     });
 });
