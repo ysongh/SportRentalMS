@@ -16,6 +16,11 @@
                     <td><%= sport.quantity %></td>
                     <td><%= sport.description %></td>
                     <td><a href="/sports/<%= sport._id %>/edit">Edit</a></td>
+                    <td>
+                        <form id="delete" action="/sports/<%- sport._id %>?_method=DELETE" method="POST">
+                            <button class="ui red basic button">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             <% }) %>
         </tbody>

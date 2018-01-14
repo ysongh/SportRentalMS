@@ -73,6 +73,17 @@ app.put("/sports/:id", function(req, res){
     });
 });
 
+app.delete("/sports/:id", function(req, res){
+    Sport.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/sports");
+        }
+        else{
+            res.redirect("/sports/");
+        }
+    });
+});
+
 app.get("*", function(req, res){
    res.send("Cannot found this page");
 });
